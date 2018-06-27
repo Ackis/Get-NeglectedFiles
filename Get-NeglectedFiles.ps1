@@ -1,8 +1,7 @@
 # Script: Get-NeglectedFiles.ps1
-# Author: Ed Wilson, MSFT
-# Date: 01/27/2014 16:57:52
-# Keywords: Storage, Files
-# Comments: HSG-2-7-14
+# Author: John Pasula
+# Original script created by Ed Wilson, MSFT and posted here:
+#	https://blogs.technet.microsoft.com/heyscriptingguy/2014/02/07/use-powershell-to-find-files-that-have-not-been-accessed/
 
 Function Get-NeglectedFiles
 
