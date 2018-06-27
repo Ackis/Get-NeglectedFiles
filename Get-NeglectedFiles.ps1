@@ -6,9 +6,10 @@
 Function Get-NeglectedFiles
 {
 	Param([string[]]$path, [int]$numberMonths)
+	#$MyDocs=[Environment]::GetFolderPath("MyDocuments")
 	if (TEST-PATH -path $path) {
 		$cutOffDate = (Get-Date).AddMonths(-$numberMonths)
-		Get-ChildItem $path -Recurse | Where-Object {$_.LastAccessTime -le $cutOffDate}
+		Get-ChildItem $path -Recurse | Where-Object {$_.LastAccessTime -le $cutOffDate} | Select Name, LastAccessTime
 	} else {
 		WRITE-ERROR -message "Error: $path does not exist." -category 'WriteError'
 	}
