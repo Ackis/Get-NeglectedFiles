@@ -5,7 +5,11 @@
 
 Function Get-NeglectedFiles
 {
-	Param([string[]]$path, [int]$numberDays)
-	$cutOffDate = (Get-Date).AddMonths(-$numberMonths)
-	Get-ChildItem $path -Recurse | Where-Object {$_.LastAccessTime -le $cutOffDate} | Select Name, LastAccessTime
+	Param([string[]]$path, [int]$numberMonths)
+	if (TEST-PATH -path $path) {
+		$cutOffDate = (Get-Date).AddMonths(-$numberMonths)
+		Get-ChildItem $path -Recurse | Where-Object {$_.LastAccessTime -le $cutOffDate}
+	} else {
+		WRITE-ERROR -message "Error: $path does not exist." -category 'WriteError'
+	}
 }
