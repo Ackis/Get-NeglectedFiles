@@ -4,17 +4,8 @@
 #	https://blogs.technet.microsoft.com/heyscriptingguy/2014/02/07/use-powershell-to-find-files-that-have-not-been-accessed/
 
 Function Get-NeglectedFiles
-
 {
-
- Param([string[]]$path,
-
-       [int]$numberDays)
-
- $cutOffDate = (Get-Date).AddDays(-$numberDays)
-
- Get-ChildItem -Path $path |
-
- Where-Object {$_.LastAccessTime -le $cutOffDate}
-
+	Param([string[]]$path, [int]$numberDays)
+	$cutOffDate = (Get-Date).AddDays(-$numberDays)
+	Get-ChildItem -Path $path | Where-Object {$_.LastAccessTime -le $cutOffDate}
 }
